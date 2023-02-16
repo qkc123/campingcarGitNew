@@ -150,9 +150,7 @@ document.querySelector("#btn-list").addEventListener("click",function(e){
 },false);
 </script>
 
-<!-- 모달&모달테스트 -->
-		
-		
+<!-- 차량정비내역 등록/수정모달start -->				
 		<c:if test="${repair.repair_no == null }">
 		
 		<button data-bs-target="#exampleModalToggle3" data-bs-toggle="modal" class="btn btn-primary">정비내역 등록</button>
@@ -319,7 +317,7 @@ document.querySelector("#btn-list").addEventListener("click",function(e){
 				
 		
 	
-		<!-- 모달끝 -->
+		<!-- 차량정비 수정/등록 모달end -->
 
 
 

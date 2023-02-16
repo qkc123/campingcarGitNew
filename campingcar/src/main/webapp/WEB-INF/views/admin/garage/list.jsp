@@ -67,16 +67,7 @@ window.addEventListener('load',function(){
 				window.location.href = url;			
 			})	
 	}
-	
-	//해당페이지 active 만들기
-	const tab = $('.tab-button');
-	for(let i = 0; i< tab.length; i++){
-	    tab.eq(i).click(function(){
-	        tab.removeClass('orange');	
-	        tab.eq(i).addClass('orange');
-	
-	    })
-	}
+		
 </script>
 </head>
 <body>
@@ -201,12 +192,12 @@ geocoder.addressSearch(a, function(result, status) {
 <thead>
 <tr class="table-secondary">
 	
-	<th>선택</th>
 	<th>정비소 명</th>
 	<th>정비소 주소</th>
 	<th>정비소 연락처</th>
 	<th>영업 상태</th>
 	<th>위치</th>
+	<th>관리자 메뉴</th>
 	
 	
 </tr>
@@ -229,12 +220,6 @@ geocoder.addressSearch(a, function(result, status) {
 			 <!-- 관리자용 수정버튼 --> 
   			<c:if test="${admin==1}">
 			</c:if>
-			<th>			
-			<button type="button" class="btn btn-outline-success" 
-			 onclick='location.href="${contextPath}/admin/garage/update?garage_no=${GarageDTO.garage_no}"'>수정</button>
-			<button type="button" class="btn btn-outline-danger" style="padding: 5px 10px 5px 10px;"
-			onclick='location.href="${contextPath}/admin/garage/update_delete?garage_no=${GarageDTO.garage_no}"'>삭제</button>
-			</th>
 			
 			
 			
@@ -251,7 +236,13 @@ geocoder.addressSearch(a, function(result, status) {
 			 <!-- 카카오맵이용해서 창띄우기 
 			<a href="https://map.kakao.com/link/search/${GarageDTO.garage_addr }" target="_blank">지도보기</a>
 			-->
-			<button type="button" class="btn btn-outline-info" onclick="garage_search('${GarageDTO.garage_addr }','${GarageDTO.garage_name }')" >지도보기</button>
+			<button type="button" class="btn btn-outline-primary" onclick="garage_search('${GarageDTO.garage_addr }','${GarageDTO.garage_name }')" >지도보기</button>
+			</th>
+			<th>			
+			<button type="button" class="btn btn-outline-success" 
+			 onclick='location.href="${contextPath}/admin/garage/update?garage_no=${GarageDTO.garage_no}"'>수정</button>
+			<button type="button" class="btn btn-outline-danger" style="padding: 5px 10px 5px 10px;"
+			onclick='location.href="${contextPath}/admin/garage/update_delete?garage_no=${GarageDTO.garage_no}"'>삭제</button>
 			</th>
 			
 		</tr>
