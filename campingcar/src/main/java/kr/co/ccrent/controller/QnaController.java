@@ -25,6 +25,7 @@ public class QnaController {
 	@Autowired
 	private QnaService service;
 
+	// 문의글 작성페이지
 	@RequestMapping(value = "/qna/register", method = RequestMethod.GET)
 	public void qna_registerGET() throws Exception {
 		logger.info("register get..........");
@@ -66,6 +67,7 @@ public class QnaController {
 		model.addAttribute("pageMaker", pageMaker);
 	}
 
+	// 문의글 상세페이지
 	@RequestMapping(value = "/qna/read", method = RequestMethod.GET)
 	public void qna_read(@RequestParam("qna_no") int qna_no, Model model) throws Exception {
 
@@ -79,6 +81,7 @@ public class QnaController {
 		return "redirect:/qna/qnalist?keyword=";
 	}
 
+	// 문의글 수정페이지
 	@RequestMapping(value = "/qna/modifyForm", method = RequestMethod.GET)
 	public void qna_modifyGET(@RequestParam("qna_no") int qna_no, @ModelAttribute("cri") 
 	Criteria cri, Model model) throws Exception {
