@@ -113,7 +113,7 @@ width:120px;
 <div style="text-align:center;">
 <button onclick="location.href='list';" class="btn btn-primary" style="width:150px; height:40px;">목록</button>
 </div>
-<!-- 모달&모달테스트 -->
+<!-- 모달start -->
 		
 		
 
@@ -177,7 +177,7 @@ width:120px;
 		  </div>
 		  </div>
 		  </div>
-
+<!-- 모달end -->
 
 <!-- ================================================== -->		
 		</div> <!-- // #body_contents end -->
