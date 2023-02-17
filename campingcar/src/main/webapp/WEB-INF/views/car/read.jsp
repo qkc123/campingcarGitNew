@@ -66,10 +66,17 @@ width:120px;
 		<col width="*" />
 	</colgroupd>
 	<tr>
+		<th class="table-secondary">차량 상태</th>
+		<td>
+			<c:if test="${dto.car_state==1 }"><strong style="color:#0d6efd; font-weight:bold;">사용 가능</strong></c:if>
+			<c:if test="${dto.car_state==0 }"><strong style="color:#dc3545; font-weight:bold;">사용 불가</strong></c:if>
+		</td>
+	</tr>	
+	<tr>
 		<th class="table-secondary">등록 번호</th><td>${dto.car_regid }</td>
 	</tr>
 	<tr>
-		<th class="table-secondary">대여 회사</th><td>${dto.comp_id }</td>
+		<th class="table-secondary">대여 회사</th><td>${companyDTO.comp_name }<!-- ${dto.comp_id } --></td>
 	</tr>
 	<tr>
 		<th class="table-secondary">모델 명</th><td>${dto.car_modelname }</td>
@@ -90,7 +97,8 @@ width:120px;
 		<th class="table-secondary">세부 내용</th><td>${dto.car_detail }</td>
 	</tr>
 	<tr>
-		<th class="table-secondary">대여 비용 (1일 기준)</th><td>${dto.car_rentprice }</td>
+		<th class="table-secondary">대여 비용 (1일 기준)</th><td><fmt:formatNumber value="${dto.car_rentprice }" pattern="#,###" /></td>
+
 	</tr>
 	<tr>
 		<th class="table-secondary">등록 일</th><td>${dto.car_regdate }</td>
@@ -111,7 +119,9 @@ width:120px;
 
 
 <div style="text-align:center;">
-<button onclick="location.href='list';" class="btn btn-primary" style="width:150px; height:40px;">목록</button>
+
+<c:if test="${dto.car_state==1 }"><button onclick="location.href='${contextPath }/rent/register?car_regid=${dto.car_regid }';" class="btn btn-primary" style="width:150px; height:40px;">예약</button></c:if>
+<button onclick="location.href='list';" class="btn btn-secondary" style="width:150px; height:40px;">목록</button>
 </div>
 <!-- 모달start -->
 		
