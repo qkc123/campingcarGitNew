@@ -123,7 +123,7 @@ width:120px;
 <c:if test="${dto.car_state==1 }"><button onclick="location.href='${contextPath }/rent/register?car_regid=${dto.car_regid }';" class="btn btn-primary" style="width:150px; height:40px;">예약</button></c:if>
 <button onclick="location.href='list';" class="btn btn-secondary" style="width:150px; height:40px;">목록</button>
 </div>
-<!-- 모달&모달테스트 -->
+<!-- 모달start -->
 		
 		
 
@@ -187,7 +187,7 @@ width:120px;
 		  </div>
 		  </div>
 		  </div>
-
+<!-- 모달end -->
 
 <!-- ================================================== -->		
 		</div> <!-- // #body_contents end -->

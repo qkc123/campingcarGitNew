@@ -259,7 +259,7 @@ geocoder.addressSearch(a, function(result, status) {
 				</c:when>
 				
 				<c:otherwise>
-				<a style="color: white;" class="<c:if test="${cri.page == idx }">btn btn-secondary</c:if>" href = "list${pageMaker.makeSearch(idx)}"  >${idx }</a>
+				<a style="color: white;" class="btn btn-secondary" href = "list${pageMaker.makeSearch(idx)}"  >${idx }</a>
 				</c:otherwise>				
 				</c:choose>	
 				

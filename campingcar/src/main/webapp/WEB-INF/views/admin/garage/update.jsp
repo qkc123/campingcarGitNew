@@ -20,27 +20,26 @@
 
 $(document).ready(function(){  
      
-       //아이디 유효성검사
-    $("#update").on("click", function(){
-    	
-       if($("#garage_name").val()==""){
-          alert("정비소명을 입력해주세요.");
-          $("#garage_name").focus();
-          return false;
-       }
-       //비밀번호 유효성검사
-       if($("#garage_addr").val()==""){
-          alert("주소를 입력해주세요.");
-          $("#garage_addr").focus();
-          return false;
-       }
-       //이름 유효성검사
-       if($("#garage_code").val()==""){
-          alert("지역을 선택해주세요.");
-          $("#garage_code").focus();
-          return false;
-       }
-       alert('정비소정보 수정이 완료되었습니다')
+	//정비소명 유효성검사
+	$("#update").on("click", function(){	 	
+		if($("#garage_name").val()==""){
+		alert("정비소명을 입력해주세요.");
+		$("#garage_name").focus();
+		return false;
+	}
+	//정비소주소 유효성검사
+		if($("#garage_addr").val()==""){
+	    alert("주소를 입력해주세요.");
+	    $("#garage_addr").focus();
+	    return false;
+	}
+	//지역 유효성검사
+		if($("#garage_code").val()==""){
+	    alert("지역을 선택해주세요.");
+	    $("#garage_code").focus();
+	    return false;
+	}
+    alert('정비소정보 수정이 완료되었습니다')
     });
  })
 </script>
