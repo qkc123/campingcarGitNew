@@ -23,7 +23,7 @@ public interface QnaMapper {
 	// 게시판 총 갯수
 	public int getTotal();
 
-	// 문의 게시판 페이징처리
+	// 문의 게시판 페이징처리, 검색
 	List<QnaDTO> qna_select(Criteria cri) throws Exception;
 
 	public int qna_select_count(Criteria cri) throws Exception;

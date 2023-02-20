@@ -18,7 +18,42 @@
 <%@ include file="../include/plugin.jsp" %>
 <link href="${contextPath}/resources/css/sub_all.css" rel="stylesheet" />
 
+<style>
+.basic-slide {
+  display: inline-block;
+  width: 215px;
+  padding: 10px 0 10px 15px;
+  font-family: "Open Sans", sans;
+  font-weight: 400;
+  color: #377D6A;
+  background: #efefef;
+  border: 0;
+  border-radius: 3px 0px 0px 3px;
+  outline: 0;
+  
+  transition: all .3s ease-in-out;
+  
+  &::-webkit-input-placeholder {
+    color: #efefef;
+    text-indent: 0;
+    font-weight: 300;
+  }
 
+}
+.basic-slide:focus,
+.basic-slide:active {
+  color: #377D6A;
+  text-indent: 0;
+  background: #efefef;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  
+  &::-webkit-input-placeholder {
+    color: #aaa;
+  }
+
+}
+</style>
 
 <script>
 function search(){//검색기능
@@ -61,7 +96,7 @@ function search(){//검색기능
 	
 	<div class="panel-body">
 	
-	<table class="table board_table center">
+	<table class="table board_table center"> 
 		<tbody>
 			<colgroup>
 				<col width="10%" />
@@ -102,7 +137,8 @@ function search(){//검색기능
 	<div class="container text-center" style="padding-top: 15px"> 
 	
     <span>
-    <input class="basic-slide" id="keyword" name="keyword" type="search" value="${pageMaker.cri.keyword}" 
+    <input style="margin-left: -3px; height: 44px; margin-bottom:2px; border-radius: 0px 3px 3px 0px; border:0;"
+    class="basic-slide" id="keyword" name="keyword" type="search" value="${pageMaker.cri.keyword}" 
     placeholder="문의글 검색" />
     
 	<button style="margin-left: -3px; height: 44px; margin-bottom:2px; border-radius: 0px 3px 3px 0px; border:0;" 
@@ -165,15 +201,14 @@ function search(){//검색기능
 		
 	</script>
 	
-			</div> <!-- panel-body end -->
-		</div><!-- // #body_contents end -->
-	</div><!-- // #wrap end -->
+				</div> <!-- panel-body end -->
+			</div><!-- // #body_contents end -->
+		</div><!-- // #wrap end -->
 	
 		<!-- #footer start -->
 	<%@ include file="../include/footer.jsp" %>
 		<!-- //#footer end -->
-	
-	   <!-- /.content -->
-	</div>
+		   
+	</div><!-- /.container end -->
 </body>
 </html>
