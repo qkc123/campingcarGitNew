@@ -1,69 +1,35 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="true" %>
 <%@ page import="java.util.*" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
-<c:set var="mn" value="6" />
-<c:set var="sn" value="1" />
-
 <!DOCTYPE html>
 <html>
+	<meta name="viewport" content="width=device-width, initial-scale=1">	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <head>
 <meta charset="UTF-8">
-<title>${menuMap[mn]['sub'][sn]['title'] } - 자바 캠핑카</title>
+<title>전체조회목록</title>
 <%@ include file="../../include/plugin.jsp" %>
-<link href="${contextPath}/resources/css/sub_all.css" rel="stylesheet" />
+<link href="${contextPath}/resources/css/admin/admin_all.css" rel="stylesheet" />
+<c:set var="title" value="공지사항" />
 
 </head>
-<style>
-	.trr{
-		 background-color: #b3e5fc;
-	}
-	.ja{
-		padding: 10px 0px;
-	}
-</style>
 <body>
 
-
-<div id="container">
-	<!-- #header start -->
+ <div id="container">
+				  <!-- #sidebar start -->
 	<%@ include file="../include/sidebar.jsp" %>
-	<!--// #header end -->
-	
-   <div id="body_head">
-      <h2>${menuMap[mn]['sub'][sn]['title'] }</h2>
-      <div class="location">
-         HOME　<i class="fa-solid fa-circle-chevron-right"></i>　${menuMap[mn]['title'] }　<i class="fa-solid fa-circle-chevron-right"></i>　<span>${menuMap[mn]['sub'][sn]['title'] }</span>
-      </div>
-   </div>
-	
-	<div id="wrap">
-	
-      <!-- #submenu start -->
-      <%@ include file="../include/topmenu.jsp" %>
-      <!-- // #submenu end -->
-		
-		<div id="body_contents">
-<!-- ================================================== -->
+	<!-- // #sidebar end -->
 
- 
-<!-- Main content -->
-<section class="content">
-<div class="panel-body">
-	<div class="row3">
-		<!-- left column -->
-		  <div class="col-md-12" style="margin: auto;">
-        	<!-- general form elements -->
-        		<div class="box box-primary">
-        			<div class="box-header with-border">
-       					</div><!-- /.box-header -->
+	<!-- #topmenu start -->
+	<%@ include file="../include/topmenu.jsp" %>
+	<!-- // #topmenu end -->
 	
-					<table class="table table-bordered">
-						
-
+	
+	
 <div class="input_wrap ja">
 
 	
@@ -134,14 +100,19 @@
 </script>	
 
 
- 
 
 
-   
-   
-<!-- ================================================== -->
-	</div><!-- // #wrap end -->
-</div><!-- // #container end -->
+
+</form>
+      </div>
+      <!--  end panel-body -->
+    </div>
+    <!--  end panel-body -->
+  </div>
+  <!-- end panel -->
+</div>
+<!-- /.row -->
+
 
 </body>
 </html>

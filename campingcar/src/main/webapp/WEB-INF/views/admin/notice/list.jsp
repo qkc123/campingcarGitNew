@@ -1,70 +1,60 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="true" %>
 <%@ page import="java.util.*" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
-<c:set var="mn" value="2" />
-<c:set var="sn" value="1" />
-
+<c:set var="title" value="공지사항" />
 <!DOCTYPE html>
 <html>
+	<meta name="viewport" content="width=device-width, initial-scale=1">	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <head>
 <meta charset="UTF-8">
-<title>${menuMap[mn]['sub'][sn]['title'] } - 자바 캠핑카</title>
+<title>공지사항 목록</title>
 <%@ include file="../../include/plugin.jsp" %>
-<link href="${contextPath}/resources/css/sub_all.css" rel="stylesheet" />
+<link href="${contextPath}/resources/css/admin/admin_all.css" rel="stylesheet" />
+<link href="${contextPath}/resources/css/kakaomap.css" rel="stylesheet" />
 </head>
+<body>
 <style>
-	.trr{
-		 background-color: #b3e5fc;
-	}
-	.ja{
-		padding: 10px 0px;
-	}
-	h1 {
-    font-size: 28px;
-    background: linear-gradient(to right top, #861657, #ffa69e);
-    color: transparent;
-    -webkit-background-clip: text;
+.trr{
+	 background-color: #b3e5fc;
+}
+.ja{
+	padding: 10px 0px;
+}
+h1 {
+font-size: 28px;
+background: linear-gradient(to right top, #861657, #ffa69e);
+color: transparent;
+-webkit-background-clip: text;
 }
 </style>
-<body>
 
 
-<div id="container">
-	<!-- #header start -->
-<%@ include file="../include/sidebar.jsp" %>
-	<!--// #header end -->
-	
-   <div id="body_head">
-      <h2>${menuMap[mn]['sub'][sn]['title'] }</h2>
-      <div class="location">
-         HOME　<i class="fa-solid fa-circle-chevron-right"></i>　${menuMap[mn]['title'] }　<i class="fa-solid fa-circle-chevron-right"></i>　<span>${menuMap[mn]['sub'][sn]['title'] }</span>
-      </div>
-   </div>
-	
+
+ <div id="container">
+				  <!-- #sidebar start -->
+	<%@ include file="../include/sidebar.jsp" %>
+	<!-- // #sidebar end -->
+
+	<!-- #topmenu start -->
+	<%@ include file="../include/topmenu.jsp" %>
+	<!-- // #topmenu end -->
 	<div id="wrap">
 	
-      <!-- #submenu start -->
-      <%@ include file="../include/topmenu.jsp" %>
-      <!-- // #submenu end -->
-		
-		<div id="body_contents">
-<!-- ================================================== -->
-
 	<section class="content container-fluid">
 			<div class="table-responsive">
-				<div class="container text-center table-hover">
-				  <table class="table table-bordered text-center">
-				  <colgroup> 
+			 <div class="container text-center table-hover">
+			<table class="table table-bordered">
+			<colgroup>
 				</colgroup>
-<div style="text-align:center">
-<h1>가장 많은 질문들을 정리해 올렸습니다. 궁금한점이 있으면 확인해 주세요</h1>
-
-	
-</div>
+			
+			<div style="text-align:center">
+				<h1>공지사항 목록</h1>
+			</div>
 
 <!-- Main content -->
 <section class="content">
@@ -72,6 +62,13 @@
 		<!-- left column -->
 		<div class="col-md-12" style="margin: auto;">
 			<!-- general form elements -->
+			
+		<div class="box">
+  	 		<div style="text-align:right">
+ 				<button type="button" class="btn btn-primary trr" style="color:#6699ff"><a href="${contextPath}/admin/notice/enroll"><b>공지사항 등록하기</b></a></button>
+			</div>
+		</div>
+			
 
 			<div class="box">
 				<div class="box-header with-border">
@@ -103,7 +100,8 @@
              </tr>
         </c:forEach>
 	</table>
-			<div style="text-align:right">
+		<div class="box">
+ 			<div class="container text-center">
 		 <div class="search_wrap ja">
         <div class="search_area">
         	   <select name="type">
@@ -119,8 +117,12 @@
             <button>검색</button>
         </div>
     </div> 
-  	 </div>  
-			<div class="container text-center">	
+  	 	</div> 
+  	 		</div>
+  	 			</div> 
+  	 		
+	<div class="box">
+ 				<div class="container text-center">
 	<div class="pageInfo_wrap ja" >
         <div class="pageInfo_area">
  			<ul id="pageInfo" class="pageInfo">
@@ -151,11 +153,8 @@
 		</form>
  			</div>
  				</div>
- 				
- 					<div class="box">
- 				<div class="container text-right">
-					<button type="button" class="btn btn-primary"><a href="/notice/enroll"><b>문의사항 등록하기↗</b></a></button>
-				</div>
+ 								
+				
 				<!-- /.box-body -->
 				
 				<!-- /.box-footer-->
@@ -228,20 +227,17 @@ $(document).ready(function(){
         moveForm.find("input[name='pageNum']").val(1);
         moveForm.submit();
     });
-		
+</script>		
 	
-</script>
-</section>
+   </div>
+   </div>
+</form>
+<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+		crossorigin="anonymous"></script>
 </div>
 </div>
-<script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
-  
-<!-- ================================================ -->
-	</div><!-- // #wrap end -->
-</div><!-- // #container end -->
+
 
 </body>
 </html>

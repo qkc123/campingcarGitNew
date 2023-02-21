@@ -31,6 +31,7 @@ import kr.co.ccrent.service.CarService;
 import kr.co.ccrent.service.CompanyService;
 import kr.co.ccrent.service.FaqBoardService;
 import kr.co.ccrent.service.GarageService;
+import kr.co.ccrent.service.NoticeService;
 import kr.co.ccrent.service.RentService;
 import kr.co.ccrent.service.RepairService;
 import lombok.RequiredArgsConstructor;
@@ -48,6 +49,7 @@ public class AdminController {
 	private final GarageService garageService;
 	private final CompanyService companyService;
 	private final FaqBoardService faqBoardService;
+	private final NoticeService nservice;
 
 	@GetMapping(value = { "/", "" })
 	public String indexGET() {
@@ -436,6 +438,30 @@ public class AdminController {
 	   model.addAttribute("pageMaker",pageMaker);
 	}
 	
+	//==================================notice
 	
+	//공지사항 목록 페이지 접속(페이징 적용)
+	  @GetMapping("/notice/list")
+	    public void admin_noticeListGET(Model model, kr.co.ccrent.domain.Criteria cri) {
+	        
+	        System.out.println("noticeListGET");
+	        
+	        model.addAttribute("list", nservice.getListPaging(cri));
+	        
+	        int total = nservice.getTotal(cri);
+	        
+	        kr.co.ccrent.domain.PageMaker pageMake = new kr.co.ccrent.domain.PageMaker(cri, total);
+	        
+	        model.addAttribute("pageMaker", pageMake);
+	  }
+	  
+	//공지사항 등록 페이지 접속
+			@GetMapping("/notice/enroll")
+			public void noticeEnrollGET() {
+				
+				System.out.println("공지사항 등록 페이지 진입");
+				
+			
+			}
 
 }

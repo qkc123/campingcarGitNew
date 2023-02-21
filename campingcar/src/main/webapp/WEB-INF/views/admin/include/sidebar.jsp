@@ -31,6 +31,7 @@
 		<li><a href="${contextPath }/admin/faqboard/listAll?keyword="><i class="fa-solid fa-bars"></i>　게시판 관리</a>
 		<ul>
 				<li><a href="${contextPath }/admin/faqboard/listAll?keyword="><i class="fa-regular fa-circle"></i>　FAQ게시판</a></li>							
+				<li><a href="${contextPath }/admin/notice/list"><i class="fa-regular fa-circle"></i>　공지사항</a></li>							
 			</ul>
 			</li>
 		<li><a href="${contextPath }/admin/user/list?keyword="><i class="fa-solid fa-user"></i>　회원 정보</a></li>
