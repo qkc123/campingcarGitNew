@@ -18,10 +18,40 @@
 <%@ include file="../include/plugin.jsp" %>
 <link href="${contextPath}/resources/css/sub_all.css" rel="stylesheet" />
 
-<!-- 제목 위에 마우스 올릴 경우 이벤트 발생(빨강색으로 변경됨) -->
 <style>
-a:hover{
-color: red;
+.basic-slide {
+  display: inline-block;
+  width: 215px;
+  padding: 10px 0 10px 15px;
+  font-family: "Open Sans", sans;
+  font-weight: 400;
+  color: #377D6A;
+  background: #efefef;
+  border: 0;
+  border-radius: 3px 0px 0px 3px;
+  outline: 0;
+  
+  transition: all .3s ease-in-out;
+  
+  &::-webkit-input-placeholder {
+    color: #efefef;
+    text-indent: 0;
+    font-weight: 300;
+  }
+
+}
+.basic-slide:focus,
+.basic-slide:active {
+  color: #377D6A;
+  text-indent: 0;
+  background: #efefef;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  
+  &::-webkit-input-placeholder {
+    color: #aaa;
+  }
+
 }
 </style>
 
@@ -66,37 +96,49 @@ function search(){//검색기능
 	
 	<div class="panel-body">
 	
-	<table class="table table-bordered table-hover">
-		<tr align="center" bgcolor="gray" class="a">
+	<table class="table board_table center"> 
+		<tbody>
+			<colgroup>
+				<col width="10%" />
+				<col width="*" />
+				<col width="10%" />
+				<col width="20%" />
+				<col width="10%" />
+			</colgroup>
+			<thead>
+		 <tr>
 			<th>글번호</th>
 			<th>제목</th>
 			<th>내용</th>
 			<th>작성자</th>
 			<th>작성일</th>
-		</tr>
-
+		 </tr>
+			</thead>
+			<tbody>
 		<c:forEach items="${list}" var="QnaVO">
 			<tr align="center">
 				<td>${QnaVO.qna_no}</td>
-				<td><a href='read?qna_no=${QnaVO.qna_no}'>${QnaVO.qna_title}</a></td>
+				<td class="left"><a href='read?qna_no=${QnaVO.qna_no}'>${QnaVO.qna_title}</a></td>
 				<td>${QnaVO.qna_content}</td>
 				<td>${QnaVO.qna_writer}</td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd" value="${QnaVO.qna_regdate}" /></td>
 			</tr>
 		</c:forEach>
+			</tbody>
 	</table>
 
 	<c:if test="${pageMaker.cri.page!=null }">
 		
 		<div class="container text-right" style="margin-left: 15px">
-			<button type="button" class="btn btn-outline-dark" onclick="location.href='register'"><b>문의글 작성</b></button>
+			<button type="button" class="btn btn-primary" onclick="location.href='register'"><b>문의글 작성</b></button>
 		</div>
 		
 		<form name="search_QnA" autocomplete="on">
 	<div class="container text-center" style="padding-top: 15px"> 
 	
     <span>
-    <input class="basic-slide" id="keyword" name="keyword" type="search" value="${pageMaker.cri.keyword}" 
+    <input style="margin-left: -3px; height: 44px; margin-bottom:2px; border-radius: 0px 3px 3px 0px; border:0;"
+    class="basic-slide" id="keyword" name="keyword" type="search" value="${pageMaker.cri.keyword}" 
     placeholder="문의글 검색" />
     
 	<button style="margin-left: -3px; height: 44px; margin-bottom:2px; border-radius: 0px 3px 3px 0px; border:0;" 
@@ -159,15 +201,14 @@ function search(){//검색기능
 		
 	</script>
 	
-			</div> <!-- panel-body end -->
-		</div><!-- // #body_contents end -->
-	</div><!-- // #wrap end -->
+				</div> <!-- panel-body end -->
+			</div><!-- // #body_contents end -->
+		</div><!-- // #wrap end -->
 	
 		<!-- #footer start -->
 	<%@ include file="../include/footer.jsp" %>
 		<!-- //#footer end -->
-	
-	   <!-- /.content -->
-	</div>
+		   
+	</div><!-- /.container end -->
 </body>
 </html>

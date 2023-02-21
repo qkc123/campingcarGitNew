@@ -39,6 +39,8 @@
 		<div id="body_contents">
 <!-- ================================================== -->
 
+${sessionScope.user}
+
 <c:if test="${not empty responseDTO and not empty boardConfig }">
 <table class="table board_table center">
 <tbody>
@@ -70,21 +72,24 @@
 </c:forEach>
 </tbody>
 </table>
-<nav aria-label="Page navigation example">
-	 <ul class="pagination">
-	 	<c:if test="${responseDTO.prev }">
-	 		<li class="page-item"><a class="page-link" data-num="${responseDTO.start-1 }"><i class="fa-solid fa-angle-left"></i></a></li>
-	 	</c:if>
-		<c:forEach begin="${responseDTO.start }" end="${responseDTO.end }" var="num">
-			<li class="page-item ${responseDTO.page == num?"active":"" }"><a class="page-link" data-num="${num }">${num }</a></li>
-		</c:forEach>
-	 	<c:if test="${responseDTO.next }">
-	 		<li class="page-item"><a class="page-link" data-num="${responseDTO.end+1 }"><i class="fa-solid fa-angle-right"></i></a></li>
-	 	</c:if>
-	</ul>
-</nav>
+
 <div class="board_bot">
-<button onclick="location.href='${contextPath}/board/register?bo_table=${param.bo_table }';" class="btn btn-primary">글쓰기</button>
+	<nav aria-label="Page navigation example">
+		 <ul class="pagination justify-content-center">
+		 	<c:if test="${responseDTO.prev }">
+		 		<li class="page-item"><a class="page-link" data-num="${responseDTO.start-1 }"><i class="fa-solid fa-angle-left"></i></a></li>
+		 	</c:if>
+			<c:forEach begin="${responseDTO.start }" end="${responseDTO.end }" var="num">
+				<li class="page-item ${responseDTO.page == num?"active":"" }"><a class="page-link" data-num="${num }">${num }</a></li>
+			</c:forEach>
+		 	<c:if test="${responseDTO.next }">
+		 		<li class="page-item"><a class="page-link" data-num="${responseDTO.end+1 }"><i class="fa-solid fa-angle-right"></i></a></li>
+		 	</c:if>
+		</ul>
+	</nav>
+	<div>
+	<button onclick="location.href='${contextPath}/board/register?bo_table=${param.bo_table }';" class="btn btn-primary">글쓰기</button>
+	</div>
 </div>
 
 <form action="list" method="get">

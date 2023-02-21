@@ -33,7 +33,7 @@ menuMap.put("2", new HashMap<String, Object>(){{
 		}});
 		put("2",new HashMap<String, Object>(){{
 			put("title", "캠핑카 대여 회사");	
-			put("url", contextPath+"/company/list");		
+			put("url", contextPath+"/company/list?keyword=");		
 		}});		
 	}});
 }});
@@ -67,7 +67,7 @@ menuMap.put("5", new HashMap<String, Object>(){{
 		}});
 		put("2",new HashMap<String, Object>(){{
 			put("title", "정비소 검색");	
-			put("url", contextPath+"/garage/list");	
+			put("url", contextPath+"/garage/list?keyword=");	
 		}});			
 	}});
 }});

@@ -150,176 +150,141 @@ document.querySelector("#btn-list").addEventListener("click",function(e){
 },false);
 </script>
 
-<!-- 모달&모달테스트 -->
-		
-		
-		<c:if test="${repair.repair_no == null }">
-		
-		<button data-bs-target="#exampleModalToggle3" data-bs-toggle="modal" class="btn btn-primary">정비내역 등록</button>
+<!-- 차량정비내역 등록/수정모달start -->				
+<c:if test="${repair.repair_no == null }">		
+	<button data-bs-target="#exampleModalToggle3" data-bs-toggle="modal" class="btn btn-primary">정비내역 등록</button>
 		<div class="modal fade" id="exampleModalToggle3" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-		  <div class="modal-dialog modal-dialog-centered">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">정비내역 등록</h1>
-		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-		      </div>
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+					<h1 class="modal-title fs-5" id="exampleModalToggleLabel2">정비내역 등록</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      		</div>
+				<form action="repair/register" method="post">
+					<div class="modal-body">		   
+			    		<table class="table table-bordered text-center tablemm">
+					    	<tr style="display: none">
+					    		<th class="table-dark thmm">차량ID</th>
+					    		<th><input type ="text" id="car_regid" name="car_regid" value="${dto.car_regid }" readonly/></th>
+					    		<th class="table-dark thmm">대여회사ID</th>
+					    		<th><input type ="text" id="comp_id" name="comp_id" value="${companyDTO.comp_id }" readonly/></th>
+					    	</tr>
+					    	
+					       	<tr>
+				        		<th class="table-dark thmm">정비소명</th>
+				        		<th><input type="text" id="garage_name" name="garage_name" value="${repair.garage_name }" /></th>
+				        	</tr>
+				        	<tr>
+				        		<th class="table-dark thmm">차량명</th>
+				        		<th><input type="text" id="car_name" name="car_name" value="${dto.car_name }" readonly /></th>
+				        	</tr>
+				        	<tr>
+				        		<th class="table-dark thmm">렌트회사</th>
+				        		<th><input type="text" id="comp_name" name="comp_name" value="${companyDTO.comp_name }" readonly /></th>
+				        		
+				        	</tr>
+				        	<tr>
+				        		<th class="table-dark thmm">정비내역</th>
+				        		
+				        		<th>
+				        		<textarea type="text" id="repair_info" name="repair_info" value="${repair.repair_info }">${repair.repair_info }</textarea>
+				        		</th>
+				        	</tr>
+				        	<tr>
+				        		<th class="table-dark thmm">정비일자</th>
+				        		<th ><input type="date" id="repairdate" name="repair_date" /></th>		
 		
-		<form action="repair/register" method="post">
-		 
-		      <div class="modal-body">		   
-			    <table class="table table-bordered text-center tablemm">
-			    	<tr style="display: none">
-			    		<th class="table-dark thmm">차량ID</th>
-			    		<th><input type ="text" id="car_regid" name="car_regid" value="${dto.car_regid }" readonly/></th>
-			    		<th class="table-dark thmm">대여회사ID</th>
-			    		<th><input type ="text" id="comp_id" name="comp_id" value="${companyDTO.comp_id }" readonly/></th>
-			    	</tr>
-			    	
-			       	<tr>
-		        		<th class="table-dark thmm">정비소명</th>
-		        		<th><input type="text" id="garage_name" name="garage_name" value="${repair.garage_name }" /></th>
-		        	</tr>
-		        	<tr>
-		        		<th class="table-dark thmm">차량명</th>
-		        		<th><input type="text" id="car_name" name="car_name" value="${dto.car_name }" readonly /></th>
-		        	</tr>
-		        	<tr>
-		        		<th class="table-dark thmm">렌트회사</th>
-		        		<th><input type="text" id="comp_name" name="comp_name" value="${companyDTO.comp_name }" readonly /></th>
-		        		
-		        	</tr>
-		        	<tr>
-		        		<th class="table-dark thmm">정비내역</th>
-		        		
-		        		<th>
-		        		<textarea type="text" id="repair_info" name="repair_info" value="${repair.repair_info }">${repair.repair_info }</textarea>
-		        		</th>
-		        	</tr>
-		        	<tr>
-		        		<th class="table-dark thmm">정비일자</th>
-		        		<th ><input type="date" id="repairdate" name="repair_date" /></th>		
-
-		        	</tr>
-
-		        	<tr>
-		        		<th class="table-dark thmm">정비비용(원)</th>
-		        		<th><input type="text" id="repair_price" name="repair_price" value="${repair.repair_price }"/></th>
-		        	</tr>
-		        	<tr>
-		        		<th class="table-dark thmm">추가정비내역</th>
-		        		<th><input type="text" id="repair_addinfo" 	 name="repair_addinfo" value="${repair.repair_addinfo }" /></th>
-		        	</tr>
-		        	
-				
-		        </table>
-		      </div>
-			
-		      <div class="modal-footer">
-			    <button class="btn btn-success" type="submit" name="submit"
-			    id="registersubmit" >등록</button>
-			    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">확인</button>
-			    </div>
-			</form>
+				        	</tr>
+		
+				        	<tr>
+				        		<th class="table-dark thmm">정비비용(원)</th>
+				        		<th><input type="text" id="repair_price" name="repair_price" value="${repair.repair_price }"/></th>
+				        	</tr>
+				        	<tr>
+				        		<th class="table-dark thmm">추가정비내역</th>
+				        		<th><input type="text" id="repair_addinfo" 	 name="repair_addinfo" value="${repair.repair_addinfo }" /></th>
+				        	</tr>
+						</table>
+					</div>			
+					<div class="modal-footer">
+					    <button class="btn btn-success" type="submit" name="submit"
+					    id="registersubmit" >등록</button>
+					    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">확인</button>
+					</div>
+				</form>
 			</div>
 		</div>
-	</div>
-			
+	</div>		
+</c:if>
+<c:if test="${repair.repair_no !=null }">
+<button data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"  class="btn btn-primary">정비내역 수정</button>
+</c:if>
 		
-		
-		
-		
-		
-		</c:if>
-		<c:if test="${repair.repair_no !=null }">
-	    <button data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"  class="btn btn-primary">정비내역 수정</button>
-		</c:if>
-		
-		<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-		  <div class="modal-dialog modal-dialog-centered">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">정비내역 수정</h1>
-		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-		      </div>
+<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="exampleModalToggleLabel2">정비내역 수정</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
 		        	
-		        	<!-- 모달2(수정폼) -->
-		   <form method="post"  >
-		      <div class="modal-body">		   
-			    <table class="table table-bordered text-center tablemm";>
-			       	<tr>
-		        		<th class="table-dark thmm">정비소명</th>
-		        		<th><input type="text" id="garage_name" name="garage_name" value="${repair.garage_name }"/></th>
-		        	</tr>
-		        	<tr>
-		        		<th class="table-dark thmm">차량명</th>
-		        		<th id="car_name" name="car_name" value="${dto.car_name }">${dto.car_name } </th>
-		        	</tr>
-		        	<tr>
-		        		<th class="table-dark thmm">렌트회사</th>
-		        		<th><input type="text" id="comp_name" name="comp_name" value="${companyDTO.comp_name }" readonly/></th>
-		        		
-		        	</tr>
-		        	<tr>
-		        		<th class="table-dark thmm">정비내역</th>
-		        		
-		        		<th>
-		        		<textarea style="width: 100%; height: 250px"; type="text" id="repair_info" name="repair_info" value="${repair.repair_info }">${repair.repair_info }</textarea>
-		        		</th>
-		        	</tr>
-		        	<tr>
-		        		<th class="table-dark thmm">정비일자</th>
-		        		<th ><input style="width: 70%" type="date" id="repairdate" name="repair_date" value="${repair.repair_date }" /></th>		
-						<script>
-							var now_utc = Date.now()
-							var timeOff = new Date().getTimezoneOffset()*60000;
-							var today = new Date(now_utc-timeOff).toISOString().split("T")[0];
-							document.getElementById("repairdate").setAttribute("max", today);
-						</script>
-		        	</tr>
-
-		        	<tr>
-		        		<th class="table-dark thmm">정비비용(원)</th>
-		        		<th><input type="text" id="repair_price" name="repair_price" value="${repair.repair_price }"/></th>
-		        	</tr>
-		        	<tr>
-		        		<th class="table-dark thmm">추가정비내역</th>
-		        		<th><input type="text" id="repair_addinfo" 	 name="repair_addinfo" value="${repair.repair_addinfo }" /></th>
-		        	</tr>
-		        	
-				
-		        </table>
-		      </div>
-			
-		      <div class="modal-footer">
-			    <button class="btn btn-success" type="submit" id="updatesubmit"
-			    name="modify" value="${repair.car_regid }">수정완료</button>
-			</form>
-			
-			    <form action="repair/remove" method="get">				
-			    <button type="submit" class="btn btn-danger" data-bs-dismiss="modal" 
-			    name="car_regid" id="deletesubmit" value="${repair.car_regid}">
-			    <input type="text" name="comp_id" value="${companyDTO.comp_id}" style="display: none" readonly/>
-			    내역 삭제</button>
-			    
-				
-			    </form>
-		   	
-			    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">돌아가기</button>
-			   	
-				
-		        
-		      </div>
-			
-		    </div>
-		  </div>
+		    <!-- 모달2(수정폼) -->
+			<form method="post"  >
+		      	<div class="modal-body">		   
+			    	<table class="table table-bordered text-center tablemm";>
+				       	<tr>
+			        		<th class="table-dark thmm">정비소명</th>
+			        		<th><input type="text" id="garage_name" name="garage_name" value="${repair.garage_name }"/></th>
+			        	</tr>
+			        	<tr>
+			        		<th class="table-dark thmm">차량명</th>
+			        		<th id="car_name" name="car_name" value="${dto.car_name }">${dto.car_name } </th>
+			        	</tr>
+			        	<tr>
+			        		<th class="table-dark thmm">렌트회사</th>
+			        		<th><input type="text" id="comp_name" name="comp_name" value="${companyDTO.comp_name }" readonly/></th>
+			        	</tr>
+			        	<tr>
+			        		<th class="table-dark thmm">정비내역</th>			        		
+			        		<th>
+			        		<textarea style="width: 100%; height: 250px"; type="text" id="repair_info" name="repair_info" value="${repair.repair_info }">${repair.repair_info }</textarea>
+			        		</th>
+		        		</tr>
+		        		<tr>
+			        		<th class="table-dark thmm">정비일자</th>
+			        		<th ><input style="width: 70%" type="date" id="repairdate" name="repair_date" value="${repair.repair_date }" /></th>		
+							<script>
+								var now_utc = Date.now()
+								var timeOff = new Date().getTimezoneOffset()*60000;
+								var today = new Date(now_utc-timeOff).toISOString().split("T")[0];
+								document.getElementById("repairdate").setAttribute("max", today);
+							</script>
+		        		</tr>
+		        		<tr>
+			        		<th class="table-dark thmm">정비비용(원)</th>
+			        		<th><input type="text" id="repair_price" name="repair_price" value="${repair.repair_price }"/></th>
+		        		</tr>
+		        		<tr>
+			        		<th class="table-dark thmm">추가정비내역</th>
+			        		<th><input type="text" id="repair_addinfo" 	 name="repair_addinfo" value="${repair.repair_addinfo }" /></th>
+		        		</tr>
+		        	</table>
+		      	</div>			
+		      	<div class="modal-footer">
+			    	<button class="btn btn-success" type="submit" id="updatesubmit" name="modify" value="${repair.car_regid }">수정완료</button>
+				</form>			
+				<form action="repair/remove" method="get">				
+					<button type="submit" class="btn btn-danger" data-bs-dismiss="modal" 
+					name="car_regid" id="deletesubmit" value="${repair.car_regid}">
+					<input type="text" name="comp_id" value="${companyDTO.comp_id}" style="display: none" readonly/>
+					내역 삭제</button>
+				</form>		   	
+				<button type="button" class="btn btn-primary" data-bs-dismiss="modal">돌아가기</button>
+			</div>			
 		</div>
-		
-		
-		
-				
-		
-	
-		<!-- 모달끝 -->
+	</div>
+</div>
+<!-- 차량정비 수정/등록 모달end -->
 
 
 

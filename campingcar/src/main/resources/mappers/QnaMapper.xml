@@ -34,18 +34,7 @@
 		#{qna_no}
 	</delete>
 
-
-
-	<!-- 전체리스트 카운트 -->
-	<select id="selectAll_Count" resultType="int">
-          <![CDATA[
-          select count(qna_no)
-          from qna
-          where qna_no > 0
-          ]]>
-	</select>
-
-	<!-- 페이징 처리 완료된 게시판 리스트 -->
+	<!-- 참고용입니다 !! 검색 기능 없는 페이징 처리 완료된 게시판 리스트 -->
 	<select id="selectAll" resultType="kr.co.ccrent.dto.QnaDTO">
           <![CDATA[
           select *
@@ -55,9 +44,17 @@
           limit #{pageStart},#{perPageNum}
           ]]>
 	</select>
-	
-	
-	<!-- 검색 기능 -->
+
+	<!-- 참고용입니다 !! 검색 기능 없는 전체리스트 카운트 -->
+	<select id="selectAll_Count" resultType="int">
+          <![CDATA[
+          select count(qna_no)
+          from qna
+          where qna_no > 0
+          ]]>
+	</select>
+		
+	<!-- 검색 기능 , 페이징 처리 완료된 게시판 리스트 -->
 	<select id="qna_select" resultType="kr.co.ccrent.dto.QnaDTO">
  		<![CDATA[
  		select * from qna
@@ -68,7 +65,7 @@
  		]]>
 	</select>
 
-		<!-- 정비소 검색조건에 해당하는 전체 게시물 수 조회 -->
+	<!-- 검색조건에 해당하는 전체 게시물 수 조회 -->
 	<select id="qna_select_count" resultType="int">
 		<![CDATA[
 		select 	count(qna_no)

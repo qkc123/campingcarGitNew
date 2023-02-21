@@ -22,6 +22,7 @@ public class QnaServiceImpl implements QnaService {
 	@Setter(onMethod_ = @Autowired)
 	private QnaMapper mapper;
 
+	// 문의글 작성
 	@Override
 	public void regist(QnaVO qna) throws Exception {
 
@@ -30,6 +31,7 @@ public class QnaServiceImpl implements QnaService {
 		mapper.create(qna);
 	}
 
+	// 문의글 상세페이지
 	@Override
 	public QnaVO read(Integer qna_no) throws Exception {
 
@@ -38,6 +40,7 @@ public class QnaServiceImpl implements QnaService {
 		return mapper.read(qna_no);
 	}
 
+	// 문의글 수정
 	@Override
 	public int modify(QnaVO qna) throws Exception {
 
@@ -46,6 +49,7 @@ public class QnaServiceImpl implements QnaService {
 		return mapper.update(qna);
 	}
 
+	// 문의글 삭제
 	@Override
 	public int remove(Integer qna_no) throws Exception {
 
@@ -54,12 +58,14 @@ public class QnaServiceImpl implements QnaService {
 		return mapper.delete(qna_no);
 	}
 
+	// 문의글 총 갯수
 	@Override
 	public int getTotal() {
 
 		return mapper.getTotal();
 	}
 
+	// 문의글 페이징 처리, 검색기능
 	@Override
 	public List<QnaDTO> qna_get(Criteria cri) throws Exception {
 		// TODO Auto-generated method stub
