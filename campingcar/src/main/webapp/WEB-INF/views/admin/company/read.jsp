@@ -73,7 +73,7 @@ select{
 		</table>
 		<br>
  				
-		<form role="form" method="post" action="stsmodify" style="display:inline;">
+		<form role="form" method="post" action="modify" style="display:inline;">
 			<input type="hidden" name="comp_id" value="${company.comp_id}">
 			<input type="hidden" name="comp_status" value="${company.comp_status}">
  				<h4 style="text-align:center;"><b>신청 상태 변경</b></h4>
@@ -87,7 +87,7 @@ select{
  				<td style="text-align:center;">
 					<button  type="submit" class="btn btn-primary"><b>　　　　승인　　　　</b></button>
 					</form>
-					<form role="form" method="GET" action="stsmodify2" style="display:inline;">
+					<form role="form" method="GET" action="remove" style="display:inline;">
 					<input type="hidden" name="comp_id" value="${company.comp_id}">
 					<input type="hidden" name="comp_status" value="${company.comp_status}">
 					<button type="submit" class="btn btn-danger"><b>　　　　거절　　　　</b></button>

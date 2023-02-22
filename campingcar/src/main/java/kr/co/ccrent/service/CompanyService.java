@@ -9,25 +9,12 @@ import kr.co.ccrent.dto.Criteria;
 
 public interface CompanyService {
 	
-// 			insert   => register
-// 			select   => get     
-//          list     => getAll()
-//          update   =>  modify
-//          delete    => remove
+//  ★★★★★★★★★★★★★★★★★★★★               유저 페이지              ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+	
 //	랜트카 대여 회사명 전체 조회
 	public List<CompanyDTO> getAll(Criteria cri) throws Exception;
 	public int getAll_Count(Criteria cri) throws Exception;
 	
-//	랜드카 대여 회사 승인 대기중인 목록 전체 조회
-	public List<CompanyDTO> getAll2(Criteria cri)throws Exception;
-	public int getAll2_Count(Criteria cri) throws Exception;
-//	랜드카 대여 회사 승인 목록 전체 조회 (관리자 listForm)
-	public List<CompanyDTO> getAll3(Criteria cri)throws Exception;
-	public int getAll3_Count(Criteria cri) throws Exception;
-
-//	랜트카 대여 회사 상세 조회
-	public CompanyDTO get(int comp_id);
-	public CompanyDTO get2(int comp_id);
 	
 //	회사 정보 추가 하기
 	public int register(CompanyDTO companyDTO);
@@ -35,16 +22,31 @@ public interface CompanyService {
 	public List<CompanyDTO> getAll2();
 	public List<CompanyDTO> getAll3();
 	
-//	- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//	★★★★★★★★★★★★★★★★★★★★               유저 페이지 끝              ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
 	
-//	회사 정보 추가시 관리자 모드에서 승인       ( status를 1로 수정 해줌으로써 승인받고 브라우저에 띄워짐 ) 
-	public  int stsmodify(CompanyDTO companyDTO);
 	
-//	회사 정보 추가시 관리자 모드에서 거절       ( status를 -1로 변경하여 거절한다.실제로 지워지진않고 거절당한걸 볼수있게 남겨둠 )
-	public  int stsmodify2(int comp_status);
+	
+//  ★★★★★★★★★★★★★★★★★★★★               어드민 페이지 시작              ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+	
+// 승인 목록조회 + 페이징처리       ( 승 인 중 )  대여 회사 목록
+	public List<CompanyDTO> getAll3(Criteria cri)throws Exception;
+	public int getAll3_Count(Criteria cri) throws Exception;
+	
+//  대기 목록조회 + 페이징처리      ( 대 기 중 ) 대여 회사 현황
+	public List<CompanyDTO> getAll2(Criteria cri)throws Exception;
+	public int getAll2_Count(Criteria cri) throws Exception;
+	
+//	상세 조회
+	public CompanyDTO get(int comp_id);
 
 	
-//	- - - - - - - - - - - - - - -  - -- - - - - - - - -
+//	신청상태 변경하기 comp_status +1 = 승인 
+	public  int modify(CompanyDTO companyDTO);
+	
+//  신청 상태 거절하기 ( 삭제 )
+	public  int remove(int comp_status);
+
+	
 
 	
 }

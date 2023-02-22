@@ -5,8 +5,9 @@
 <mapper namespace="kr.co.ccrent.mapper.CompanyMapper">
 
 
-	
-	<!--  리스트 -->
+<!-- ★★★★★★★★★★★★★★★★★★★★               유저 페이지 시작              ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ -->
+
+	<!-- 승인목록 + 페이징처리 + 검색기능 -->
 	<select id="selectAll"
 		resultType="kr.co.ccrent.dto.CompanyDTO">
  			<![CDATA[
@@ -18,7 +19,7 @@
 	</select>
 	
 	
-	<!-- 전체리스트 카운트 -->
+	<!-- 승인목록 페이징처리 카운트 + 검색기능 -->
 	<select id="selectAll_Count" resultType="int">
 	 		<![CDATA[
 	 		select count(comp_status)
@@ -26,9 +27,15 @@
 	 		where comp_status > 0 and comp_name like CONCAT('%',#{keyword},'%')
 	 		]]>
 	</select>
+	<!-- 작성하기 기능 -->
+	<insert id="register" parameterType="kr.co.ccrent.dto.CompanyDTO">
+		insert into company(comp_id,comp_name,comp_addr,comp_phone,comp_pic,comp_pic_email,comp_status)
+ 		values (#{comp_id},#{comp_name},#{comp_addr},#{comp_phone},#{comp_pic},#{comp_pic_email},0) 	
+	</insert>
 	
 	
-	<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+<!-- ★★★★★★★★★★★★★★★★★★★★               유저 페이지 끝              ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ -->
+	<!-- 어드민 승인 목록 조회 + 페이징처리 + 검색기능 -->
 	<select id="selectAll3"
 		resultType="kr.co.ccrent.dto.CompanyDTO">
  			<![CDATA[
@@ -40,7 +47,7 @@
 	</select>
 	
 	
-	<!-- 전체리스트 카운트 -->
+	<!-- 어드민 승인목록 페이징처리 카운트 + 검색기능 -->
 	<select id="selectAll3_Count" resultType="int">
 	 		<![CDATA[
 	 		select count(comp_status)
@@ -50,8 +57,7 @@
 	</select>
 
 	
-	
-	<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+	<!-- 어드민 대기목록 조회 + 페이징처리 + 검색기능 -->
 	<select id="selectAll2"
 		resultType="kr.co.ccrent.dto.CompanyDTO">
  			<![CDATA[
@@ -63,7 +69,7 @@
 	</select>
 	
 	
-	<!-- 전체리스트 카운트 -->
+	<!-- 어드민 대기목록 페이징처리 카운트 + 검색기능 -->
 	<select id="selectAll2_Count" resultType="int">
 	 		<![CDATA[
 	 		select count(comp_status)
@@ -71,17 +77,6 @@
 	 		where comp_status = 0 and comp_name like CONCAT('%',#{keyword},'%')
 	 		]]>
 	</select>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	<select id="getAll2" resultType="kr.co.ccrent.dto.CompanyDTO">
 		select * from company
 		where comp_status = 0
@@ -90,7 +85,7 @@
 	
 	
 	
-	
+	<!-- status가 1인 ( 승인된 ) 목록 조회 -->
 	<select id="getAll3" resultType="kr.co.ccrent.dto.CompanyDTO">
 		select * from company
 		where comp_status = 1
@@ -105,34 +100,18 @@
 		where comp_id =#{comp_id}
 	</select>
 	
-	<select id="get2" parameterType="java.lang.Integer" resultType="kr.co.ccrent.dto.CompanyDTO">
-		select * 
-		from company 
-		where comp_id =#{comp_id}
-	</select>
-	
-	<insert id="register" parameterType="kr.co.ccrent.dto.CompanyDTO">
-		insert into company(comp_id,comp_name,comp_addr,comp_phone,comp_pic,comp_pic_email,comp_status)
- 		values (#{comp_id},#{comp_name},#{comp_addr},#{comp_phone},#{comp_pic},#{comp_pic_email},0) 	
-	</insert>
-	
-	<!-- status 1로 변경 : 1이면 승인 -->
-	<update id="stsmodify" parameterType="kr.co.ccrent.dto.CompanyDTO" >
+	<!-- status 1로 수정 ( 승인 ) -->
+	<update id="modify" parameterType="kr.co.ccrent.dto.CompanyDTO" >
 	update company
 	set comp_status = 1
 	where
 	comp_id = #{comp_id}
 	</update>
 
-	<!-- 정비소 정보 삭제 -->
-	<delete id="stsmodify2" parameterType="java.lang.Integer">
+	<!-- 제휴신청 거절하기 ( 삭제 ) -->
+	<delete id="remove" parameterType="java.lang.Integer">
 		delete from
 		company
 		where comp_id = #{comp_id}
 	</delete>
-	
-
-
-	
-	
 </mapper>
