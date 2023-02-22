@@ -43,8 +43,6 @@
 			<div id="body_contents">
 				<!-- ================================================== -->
 
-				<div class="panel-body"> <!-- 여기까지 복붙완료 -->
-
 					<table class="table board_table center">
 						<form role="form" method="post">
 							<div class="box-body">
@@ -73,7 +71,7 @@
 						</form>
 
 					</table>
-				</div><!-- panel-body end -->
+				
 			</div><!-- // #body_contents end -->
 		</div><!-- // #wrap end -->
 

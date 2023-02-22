@@ -5,7 +5,7 @@
 <%@ page import="java.text.SimpleDateFormat" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="mn" value="5" />
-<c:set var="sn" value="2" />
+<c:set var="sn" value="1" />
 <!DOCTYPE html>
 <html>
 <head>
