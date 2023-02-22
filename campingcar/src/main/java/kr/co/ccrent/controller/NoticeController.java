@@ -56,20 +56,7 @@ public class NoticeController {
 		
 		}
 	
-	//공지사항 등록
-	@PostMapping("/enroll")
-	public String noticeEnrollPOST(NoticeVO not, RedirectAttributes rttr) {
-		
-		System.out.println("NoticeVO : " + not);
-		
-		nservice.enroll(not);
-		
-		System.out.println("NoticeVO : " + not);
-		
-		rttr.addFlashAttribute("result", "enroll success");
-		
-		return "redirect:/notice/list";
-	}
+	
 	
 	//공지사항 조회
 	@GetMapping("/get")

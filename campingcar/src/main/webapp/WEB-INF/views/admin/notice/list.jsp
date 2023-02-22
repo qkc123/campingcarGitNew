@@ -5,14 +5,13 @@
 <%@ page import="java.util.*" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
-<c:set var="title" value="공지사항" />
+<c:set var="title" value="공지사항 목록보기" />
 <!DOCTYPE html>
 <html>
 	<meta name="viewport" content="width=device-width, initial-scale=1">	
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <head>
 <meta charset="UTF-8">
-<title>공지사항 목록</title>
 <%@ include file="../../include/plugin.jsp" %>
 <link href="${contextPath}/resources/css/admin/admin_all.css" rel="stylesheet" />
 <link href="${contextPath}/resources/css/kakaomap.css" rel="stylesheet" />
@@ -27,15 +26,10 @@
 }
 h1 {
 font-size: 28px;
-background: linear-gradient(to right top, #861657, #ffa69e);
-color: transparent;
 -webkit-background-clip: text;
 }
 </style>
 
-
-
- <div id="container">
 				  <!-- #sidebar start -->
 	<%@ include file="../include/sidebar.jsp" %>
 	<!-- // #sidebar end -->
@@ -53,7 +47,7 @@ color: transparent;
 				</colgroup>
 			
 			<div style="text-align:center">
-				<h1>공지사항 목록</h1>
+				<h1>공지사항 전체 글</h1>
 			</div>
 
 <!-- Main content -->
@@ -129,7 +123,7 @@ color: transparent;
  				
  				 <!-- 이전페이지 버튼 -->
                 <c:if test="${pageMaker.prev}">
-                    <li class="pageInfo_btn previous"><a href="${pageMaker.startPage-1}">&laquo;</a></li>
+                    <a class="pageInfo_btn previous" href="${pageMaker.startPage-1}">&laquo;</a>
                 </c:if>
 				
 				<!-- 각 번호 페이지 버튼 -->
@@ -194,7 +188,7 @@ $(document).ready(function(){
     	e.preventDefault();
    	 
     moveForm.append("<input type='hidden' name='bno' value='"+ $(this).attr("href")+ "'>");
-    moveForm.attr("action", "/notice/get");
+    moveForm.attr("action", "/admin/notice/get");
     moveForm.submit();
 });
 
@@ -202,7 +196,7 @@ $(document).ready(function(){
  
         e.preventDefault();
         moveForm.find("input[name='pageNum']").val($(this).attr("href"));
-        moveForm.attr("action", "/notice/list");
+        moveForm.attr("action", "/admin/notice/list");
         moveForm.submit();
         
     });

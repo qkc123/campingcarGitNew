@@ -46,26 +46,26 @@
          			
          		 </div><!-- /.box-header -->
 				</div>
-		<form action="/notice/enroll" method="post">
+		<form action="/admin/notice/enroll" method="post">
 		<div class="box-body">
-			<div class="form-group ja">
+			<div class="form-group">
 				<label for="exampleInputEmail">제목</label>
 				<input type="text" name="title" class="form-control">
 			</div>
-			<div class="form-group ja">
+			<div class="form-group">
 				<label for="exampleInputPassword1">내용</label>
 				<textarea class="form-control" name="content" rows="10"></textarea>
 			</div>
 			</div>
-				<div class="form-group ja">
+				<div class="form-group">
 					<label for="exampleInputEmail">작성자</label>
 					<input type="text" name="writer" class="form-control">
 				</div>
-			<div class="input_wrap ja">
+			<div class="input_wrap">
 				<label>등록일</label>
 				<input class="form-control" type="text" disabled name="regdater" readonly="readonly" value='<fmt:formatDate pattern="yyyy/MM/dd" value="${pageInfo.regdate}"/>' >
 			</div>
-			<div class="input_wrap ja">
+			<div class="input_wrap">
 				<label>수정일</label>
 				<input class="form-control" type="text" aria-label="Disabled input example" disabled name="updateDate" readonly="readonly" value='<fmt:formatDate pattern="yyyy/MM/dd" value="${pageInfo.updateDate}"/>' >
 			</div>	

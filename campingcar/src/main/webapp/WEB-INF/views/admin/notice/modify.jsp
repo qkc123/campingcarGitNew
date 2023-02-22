@@ -1,54 +1,43 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="true" %>
 <%@ page import="java.util.*" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
-<c:set var="mn" value="2" />
-<c:set var="sn" value="1" />
-
+<c:set var="title" value="수정 및 삭제" />
 <!DOCTYPE html>
 <html>
+	<meta name="viewport" content="width=device-width, initial-scale=1">	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <head>
 <meta charset="UTF-8">
-<title>${menuMap[mn]['sub'][sn]['title'] } - 자바 캠핑카</title>
+
 <%@ include file="../../include/plugin.jsp" %>
-<link href="${contextPath}/resources/css/sub_all.css" rel="stylesheet" />
+<link href="${contextPath}/resources/css/admin/admin_all.css" rel="stylesheet" />
+<link href="${contextPath}/resources/css/ajsbutton.css" rel="stylesheet" />
+
 </head>
-<style>
-	.ja{
-		padding: 10px 0px;
-			}
- }
-	button{
-	 font-size: 50px;
- 	}		
-</style>
 <body>
 
-
-<div id="container">
-	<!-- #header start -->
+ <div id="container">
+				  <!-- #sidebar start -->
 	<%@ include file="../include/sidebar.jsp" %>
-	<!--// #header end -->
-	
-   <div id="body_head">
-      <h2>${menuMap[mn]['sub'][sn]['title'] }</h2>
-      <div class="location">
-         HOME　<i class="fa-solid fa-circle-chevron-right"></i>　${menuMap[mn]['title'] }　<i class="fa-solid fa-circle-chevron-right"></i>　<span>${menuMap[mn]['sub'][sn]['title'] }</span>
-      </div>
-   </div>
-	
-	<div id="wrap">
-	
-      <!-- #submenu start -->
-     <%@ include file="../include/topmenu.jsp" %>
-      <!-- // #submenu end -->
-		
-		<div id="body_contents">
-<!-- ================================================== -->
+	<!-- // #sidebar end -->
 
+	<!-- #topmenu start -->
+	<%@ include file="../include/topmenu.jsp" %>
+	<!-- // #topmenu end -->
+	<div id="wrap">
+<!-- ================================================== start-->
+<style>
+.ja{
+	padding: 5px 0px;
+}
+.ja2{
+	padding: 15px 0px;
+}
+</style>
 <!-- Main content -->
 <section class="content">
 	<div class="row">
@@ -66,7 +55,7 @@
 						</div>	
 					<table class="table table-bordered">
 			
-	<form id="modifyForm" action="/notice/modify" method="post">
+	<form id="modifyForm" action="/admin/notice/modify" method="post">
 	<div class="input_wrap ja">
 		
 			<label for="exampleInputEmail">번호</label>
@@ -93,8 +82,8 @@
 		<label for="exampleInputEmail">수정일</label>
 		<input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled name="updateDate" value='<fmt:formatDate pattern="yyyy/MM/dd" value="${pageInfo.updateDate}"/>' >
 	</div>
-	</tr>		
-	<div class="btn_wrap ja">
+		
+	<div class="btn_wrap ja2">
 		<a class="btn btn btn-outline-dark" id="list_btn">돌아가기</a> 
         <a class="btn btn btn-outline-dark" id="modify_btn">수정 완료</a>
         <a class="btn btn btn-outline-dark" id="delete_btn">삭제</a>
@@ -105,7 +94,7 @@
 	</div>
 	
 	</form>
-	<form id="infoForm" action="/notice/modify" method="get">
+	<form id="infoForm" action="/admin/notice/modify" method="/admin/notice/get">
 		<input type="hidden" id="bno" name="bno" value='<c:out value="${pageInfo.bno}"/>'>
 		<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
 		<input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
@@ -113,10 +102,9 @@
 		<input type="hidden" name="keyword" value="${cri.keyword }">
 	</form>
 			
+		</form>
 		
-			</div>
-		</div>
-		</table>
+			</table>
 </section>
 	
 <script>
@@ -127,7 +115,7 @@
 	// 목록 페이지 이동 버튼 
 	$("#list_btn").on("click", function(e){
     	form.find("#bno").remove();
-   	    form.attr("action", "/notice/list");
+   	    form.attr("action", "/admin/notice/list");
     	form.submit();
 	});
 
@@ -138,12 +126,12 @@
 
 	// 취소 버튼 
 	$("#cancel_btn").on("click", function(e){
-    	form.attr("action", "/notice/get");
+    	form.attr("action", "/admin/notice/get");
     	form.submit();
 	});
 	//삭제버튼
 	$("#delete_btn").on("click" , function(e){
-		form.attr("action" , "/notice/delete");
+		form.attr("action" , "/admin/notice/delete");
 		form.attr("method", "post");
 		form.submit();
 		
@@ -151,11 +139,10 @@
 	
 	
 </script>
-
-   
-<!-- ================================================== -->
+<!-- ================================================== end-->
 	</div><!-- // #wrap end -->
-</div><!-- // #container end -->
+</div><!-- // #container end -->  
+
 
 </body>
-</html>
+</html>	

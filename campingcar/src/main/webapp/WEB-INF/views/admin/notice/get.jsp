@@ -5,16 +5,17 @@
 <%@ page import="java.util.*" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<c:set var="title" value="글 확인" />
 <!DOCTYPE html>
 <html>
 	<meta name="viewport" content="width=device-width, initial-scale=1">	
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <head>
 <meta charset="UTF-8">
-<title>전체조회목록</title>
+
 <%@ include file="../../include/plugin.jsp" %>
 <link href="${contextPath}/resources/css/admin/admin_all.css" rel="stylesheet" />
-<c:set var="title" value="공지사항" />
+<link href="${contextPath}/resources/css/ajsbutton.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -27,9 +28,27 @@
 	<!-- #topmenu start -->
 	<%@ include file="../include/topmenu.jsp" %>
 	<!-- // #topmenu end -->
+	<div id="wrap">
+<!-- ================================================== start-->
+<style>
+.ja{
+	padding: 5px 0px;
+}
+</style>
+<!-- Main content -->
+<section class="content">
+<div class="panel-body">
+	<div class="row3">
+		<!-- left column -->
+		  <div class="col-md-12" style="margin: auto;">
+        	<!-- general form elements -->
+        		<div class="box box-primary">
+        			<div class="box-header with-border">
+       					</div><!-- /.box-header -->
 	
-	
-	
+					<table class="table table-bordered">
+						
+
 <div class="input_wrap ja">
 
 	
@@ -79,7 +98,7 @@
 	</form>
 		</div>
 			</div>
-				</div>
+			
 				
 							</table>
 								</section>
@@ -89,29 +108,22 @@
 	
 	$("#list_btn").on("click", function(e){
 		form.find("#bno").remove();
-		form.attr("action", "/notice/list");
+		form.attr("action", "/admin/notice/list");
 		form.submit();
 	});
 	
 	$("#modify_btn").on("click", function(e){
-		form.attr("action", "/notice/modify");
+		form.attr("action", "/admin/notice/modify");
 		form.submit();
 	});	
-</script>	
+</script>		
 
 
-
-
-
+ 
 </form>
-      </div>
-      <!--  end panel-body -->
-    </div>
-    <!--  end panel-body -->
-  </div>
-  <!-- end panel -->
-</div>
-<!-- /.row -->
+<!-- ================================================== end-->
+	</div><!-- // #wrap end -->
+</div><!-- // #container end -->  
 
 
 </body>
