@@ -59,13 +59,9 @@ menuMap.put("4", new HashMap<String, Object>(){{
 }});
 menuMap.put("5", new HashMap<String, Object>(){{
 	put("title", "커뮤니티");	
-	put("url", "#");
-	put("sub", new HashMap<String, Object>(){{
+	put("url", contextPath+"/garage/list");
+	put("sub", new HashMap<String, Object>(){{		
 		put("1",new HashMap<String, Object>(){{
-			put("title", "이용 후기");	
-			put("url", "#");	
-		}});
-		put("2",new HashMap<String, Object>(){{
 			put("title", "정비소 검색");	
 			put("url", contextPath+"/garage/list");	
 		}});			

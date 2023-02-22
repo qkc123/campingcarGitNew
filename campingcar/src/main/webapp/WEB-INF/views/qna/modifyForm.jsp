@@ -53,6 +53,7 @@
 
 			<!-- #submenu start -->
 			<%@ include file="../include/submenu.jsp"%>
+
 			<div class="aaaaa"></div>
 			<!-- // #submenu end -->
 			<div id="body_contents">
@@ -71,7 +72,6 @@
 							<col width="15%" />
 							<col width="35%" />
 						</colgroup>
-
 
 						<form role="form" action="modify" method="post">
 							<input type='hidden' name='page' value="${cri.page}"> <input
@@ -99,6 +99,7 @@
 												pattern="yyyy-MM-dd" type="date" /></td>
 									</tr>
 								</tbody>
+								
 								<div class="form-group">
 									<label for="exampleInputPassword1"></label>
 									<textarea style="height: 239px;border: 0;outline: none; border-bottom: 1px solid #c8c8c8;" 
