@@ -37,11 +37,11 @@
 			 <!-- #submenu start -->
       		 <%@ include file="../include/submenu.jsp" %>
       		 <!-- // #submenu end -->
-		<div class="board_view">
 			<div id="body_contents">
+		
 <!-- ================================================== -->
 				
-		<div class="board_view"><!-- board_view end --></div>
+		<div class="board_view">
 			<table class="table board_table">		
 			<colgroup>
 				<col width="15%" /> 
@@ -49,7 +49,7 @@
 				<col width="15%" /> 
 				<col width="35%" /> 
 			</colgroup>
-			
+		
 			<thead>
 				<th colspan="4">${qnaVO.qna_title }</th>
 			</thead>
@@ -57,7 +57,6 @@
 				<form role="form" action="modifyForm" method="GET">
 					<input type='hidden' name='qna_no' value="${qnaVO.qna_no}">
 				</form>
-					
 			<tbody>
 			<tr>
 				<th class="table-light">작성자</th><td>${qnaVO.qna_writer }</td>
@@ -78,7 +77,8 @@
 					<a href="qnalist?keyword=" role="button" class="btn btn-primary">목록</a>
 				</div>
 
-
+	</div><!-- board_view end -->
+		
 	<script>
 	$(document).ready(function() {
 	var formObj = $("form[role='form']");
@@ -104,17 +104,15 @@
 	});
 	</script>				
 
-				</div>
-				<!--  end panel-body -->
-			
-		</div>
-		<!-- // #wrap end -->
-	</div>
-	<!-- container end -->
-	<!-- #footer start -->
-	<%@ include file="../include/footer.jsp"%>
-	<!-- //#footer end -->
+<!-- ================================================== -->	
+					
+			</div><!-- // #body_contents end -->
+		</div><!-- // #wrap end -->
 
+		<!-- #footer start -->
+		<%@ include file="../include/footer.jsp"%>
+		<!-- //#footer end -->
+
+	</div><!-- /.container end -->
 </body>
-
 </html>

@@ -5,7 +5,7 @@
 <%@ page import="java.text.SimpleDateFormat" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="mn" value="5" />
-<c:set var="sn" value="2" />
+<c:set var="sn" value="1" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -259,7 +259,7 @@ geocoder.addressSearch(a, function(result, status) {
 				</c:when>
 				
 				<c:otherwise>
-				<a style="color: white;" class="<c:if test="${cri.page == idx }">btn btn-secondary</c:if>" href = "list${pageMaker.makeSearch(idx)}"  >${idx }</a>
+				<a style="color: white;" class="btn btn-secondary" href = "list${pageMaker.makeSearch(idx)}"  >${idx }</a>
 				</c:otherwise>				
 				</c:choose>	
 				

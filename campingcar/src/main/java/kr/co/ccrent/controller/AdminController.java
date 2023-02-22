@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.ccrent.config.DateProcess;
+import kr.co.ccrent.domain.NoticeVO;
 import kr.co.ccrent.dto.CarDTO;
 import kr.co.ccrent.dto.CompanyDTO;
 import kr.co.ccrent.dto.Criteria;
@@ -31,6 +32,7 @@ import kr.co.ccrent.service.CarService;
 import kr.co.ccrent.service.CompanyService;
 import kr.co.ccrent.service.FaqBoardService;
 import kr.co.ccrent.service.GarageService;
+import kr.co.ccrent.service.NoticeService;
 import kr.co.ccrent.service.RentService;
 import kr.co.ccrent.service.RepairService;
 import lombok.RequiredArgsConstructor;
@@ -48,6 +50,7 @@ public class AdminController {
 	private final GarageService garageService;
 	private final CompanyService companyService;
 	private final FaqBoardService faqBoardService;
+	private final NoticeService nservice;
 
 	@GetMapping(value = { "/", "" })
 	public String indexGET() {
@@ -370,7 +373,7 @@ public class AdminController {
 		System.out.println("==<admin Controller> faq_register = registerpost");
 		
 		faqBoardService.register(boardDTO);
-		return "redirect:listAll";
+		return "redirect:listAll?keyword=";
 	}
 	
 	//faq게시글 상세보기<
@@ -436,6 +439,81 @@ public class AdminController {
 	   model.addAttribute("pageMaker",pageMaker);
 	}
 	
+	//==================================notice
 	
+			//공지사항 목록 페이지 접속(페이징 적용)
+			@GetMapping("/notice/list")
+			public void admin_noticeListGET(Model model, kr.co.ccrent.domain.Criteria cri) {
+	        
+				System.out.println("noticeListGET");
+				model.addAttribute("list", nservice.getListPaging(cri));
+				int total = nservice.getTotal(cri);
+				kr.co.ccrent.domain.PageMaker pageMake = new kr.co.ccrent.domain.PageMaker(cri, total);
+				model.addAttribute("pageMaker", pageMake);
+			}
+	  
+	  		//공지사항 등록 페이지 접속
+			@GetMapping("/notice/enroll")
+			public void admin_noticeEnrollGET() {
+				
+				System.out.println("공지사항 등록 페이지 진입");
+			}
+			
+			//공지사항 등록
+			@PostMapping("/notice/enroll")
+			public String admin_noticeEnrollPOST(NoticeVO not, RedirectAttributes rttr) {
+				
+				System.out.println("NoticeVO : " + not);
+				
+				nservice.enroll(not);
+				System.out.println("NoticeVO : " + not);
+				
+				rttr.addFlashAttribute("result", "enroll success");
+				return "redirect:/admin/notice/list";
+			}
+			
+			
+			//공지사항 조회
+			@GetMapping("/notice/get")
+			public void admin_noticeGetPage(int bno, Model model, kr.co.ccrent.domain.Criteria cri) {
+
+				model.addAttribute("pageInfo", nservice.getPage(bno));
+				model.addAttribute("cri", cri);
+				
+			}
+			
+			//수정 페이지 이동
+			@GetMapping("/notice/modify")
+			public void admin_noticeModifyGET(int bno, Model model, kr.co.ccrent.domain.Criteria cri ) {
+			        
+			    model.addAttribute("pageInfo", nservice.getPage(bno));
+			    
+			    model.addAttribute("cri" , cri);
+			        
+			    }
+			  
+			//페이지 수정
+			  @PostMapping("/notice/modify")
+			   public String admin_noticeModifyPOST(NoticeVO notice, RedirectAttributes rttr) {
+			        
+			        nservice.modify(notice);
+			        
+			        rttr.addFlashAttribute("result", "modify success");
+			        
+			        return "redirect:/admin/notice/list";
+			        
+			    }
+			  //페이지 삭제
+			  @PostMapping("/notice/delete")
+			  public String admin_noticeDeletePOST(int bno, RedirectAttributes rttr) {
+				  
+				  nservice.delete(bno);
+				  
+				  rttr.addFlashAttribute("result", "delete success");
+				  
+				  return "redirect:/admin/notice/list";
+			  }
+			 
+			 
 
 }
